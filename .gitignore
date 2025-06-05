@@ -30,3 +30,9 @@
 *.exe
 *.out
 *.app
+
+key.json
+
+/bktst
+/stock_data
+/__pycache__
