@@ -47,4 +47,60 @@ def plotStock(data):
     time = np.array(days,dtype='datetime64[D]')
 
     plt.plot(time, prices)
+    plt.legend()
+
+class Stock:
+    def __init__(self,symbol):
+        self.symbol = symbol
+        self.price = 0
+
+    def updatePrice(self,newPrice):
+        self.price = newPrice
+
+    def getPrice(self):
+        return self.price
+
+    def __str__(self):
+        return(f"{self.symbol}: Price = ${self.price}")
+
+class Market:
+    def __init__(self, startDate):
+        self.stocks = {}
+        self.date = startDate
+        pass
+
+    def addStocks(self, stocks=list):
+        for symbol in stocks:
+            self.stocks[symbol] = Stock(symbol)
     
+    def updateMarket(self):
+        for stock in self.stocks:
+            pass
+    
+    def getStock(self,symbol):
+        return self.stocks[symbol]
+
+class Porfolio:
+    def __init__(self, initCash, market = Market):
+        self.cash = initCash
+        self.assets = {}
+        self.market = market
+        for sybl in market.stocks.keys():
+            self.assets[sybl] = 0
+        pass
+
+    def buyStock(self,symbol,quantity):
+        stock = self.market.getStock(symbol)
+        price = stock.getPrice()
+        self.cash -= price*quantity
+        self.assets[symbol] += quantity
+        pass
+
+    def sellStock(self,symbol,quantity):
+        stock = self.market.getStock(symbol)
+        price = stock.getPrice()
+        self.cash += price*quantity
+        self.assets[symbol] -= quantity
+
+    def reportAssets():
+        pass

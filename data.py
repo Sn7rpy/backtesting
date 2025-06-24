@@ -6,10 +6,10 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-dataIBM = fn.loadData("IBM")
+dataIBM = fn.loadData("IBM","full")
 
 
 fn.plotStock(dataIBM)
-fn.plotStock(fn.loadData("AAPL"))
+fn.plotStock(fn.loadData("AAPL","full"))
 
 plt.show()
